@@ -8,3 +8,8 @@ total_color=color1+color2
 print(color1)
 print(total_color[::2])
 print(total_color[::-1])
+
+color1.append("white")
+print(color1)
+total_color=color1+color2
+print(total_color)
