@@ -41,3 +41,9 @@ r_sentence=""
 for char in sentence:
     r_sentence =char+r_sentence
     print(r_sentence) 
+
+print("당신이 원하는 구구단을 입력하세요")
+u_input=int(input())
+print("당신이 원하는",u_input," 단은 다음과 같습니다")
+for i in range(1,10):
+    print(u_input,"X",i,"=",u_input*i)
