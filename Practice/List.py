@@ -34,3 +34,10 @@ b=[0,9,8,7,6]
 ab=[a,b]
 print(ab)
 print(ab[0][2])
+
+
+sentence="ILoveYou"
+r_sentence=""
+for char in sentence:
+    r_sentence =char+r_sentence
+    print(r_sentence) 
