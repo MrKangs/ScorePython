@@ -28,3 +28,9 @@ d=[1,2,3]
 x,y,z=d
 print(d)
 print(x,y,z)
+
+a=[1,2,3,4,5]
+b=[0,9,8,7,6]
+ab=[a,b]
+print(ab)
+print(ab[0][2])
