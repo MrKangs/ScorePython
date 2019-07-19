@@ -4,7 +4,7 @@
 
 def main():  
   # Open a file for writing and create it if it doesn't exist
-  f = open("textfile.docx","w+")
+  f = open("textfile.txt","w+")
   
   # Open the file for appending text to the end
   # f = open("textfile.txt","a+")
@@ -17,15 +17,19 @@ def main():
   f.close()
   
   # Open the file back up and read the contents
-  f = open("textfile.docx","r")
+  f = open("textfile.txt","r")
   if f.mode == 'r': # check to make sure that the file was opened
     # use the read() function to read the entire file
-    # contents = f.read()
-    # print (contents)
-    
-    fl = f.readlines() # readlines reads the individual lines into a list
-    for x in fl:
-      print (x)
+     contents = f.read()
+     print (contents)
+
+     F = open("textfile.txt", "r")
+
+     fl = F.readlines()
+     for x in fl:
+       print(x)
+
+  f.close()
     
 if __name__ == "__main__":
   main()
