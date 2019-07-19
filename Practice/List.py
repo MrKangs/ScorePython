@@ -23,3 +23,8 @@ print(c)
 
 b.sort()
 print(b)
+
+d=[1,2,3]
+x,y,z=d
+print(d)
+print(x,y,z)
