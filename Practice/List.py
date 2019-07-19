@@ -13,3 +13,13 @@ color1.append("white")
 print(color1)
 total_color=color1+color2
 print(total_color)
+
+a=[1,2,3,4,5]
+b=[9,7,5,3,1,7,4,6,0]
+print(a)
+print(b)
+c=a+b
+print(c)
+
+b.sort()
+print(b)
