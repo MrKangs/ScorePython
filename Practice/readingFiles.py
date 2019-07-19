@@ -17,7 +17,10 @@ def main():
         for x in fl:
             print(x)
 
-# https://code.tutsplus.com/tutorials/how-to-work-with-excel-documents-using-python--cms-25698
+# https://code.tutsplus.com/tutorials/how-to-work-with-excel-documents-using-python--cms-25698 (English)
+#https://doitnow-man.tistory.com/159(한국어 #1)
+#https://myjamong.tistory.com/51 (한국어 #2)
+#https://pinkwink.kr/959 (한국어 #3 with graphs)
 #Need to look into this to interact with Excel 
 if __name__ == "__main__":
     main()
