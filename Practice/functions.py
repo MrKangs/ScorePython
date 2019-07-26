@@ -25,17 +25,40 @@ def math_fac(n):
 print(math_fac(5))
 
 
-def swap_test(b,x,y):
-    c = b
+
+
+
+def swap_test(c,x,y):
+    m = []
+    b = c #[1,2,3,4,5] = [1,2,3,4,5]
+    m = b
     temp=b[x]
     b[x]=b[y]
     b[y]=temp
-    print(c)
+    print(b, c, m) #My prediction: [1,3,2,4,5] [1,3,2,4,5] [1,2,3,4,5]
+
+a = [1,2,3,4,5]
+d=a
+print(d)
+swap_test(a,1,2)  
+print(a, d) #My prediction: [1,3,2,4,5] [1,2,3,4,5]
+
+
+
+
+def swap_test2(x,y):
+    temp = a[x]
+    a[x] = a[y]
+    a[y] = temp
+    print(a)
 
 a=[1,2,3,4,5]
-print(a) 
-swap_test(a,1,2)
-print(a)   
+c = []
+#print(a) 
+#swap_test2(1,2)
+swap_test([1,2,3,4,5],1,2)
+#print(a)  
+#print(c) 
 
 def test(t,z):
     temp = t
@@ -46,5 +69,13 @@ def test(t,z):
 x = 10
 y = 50
 print(x,y)
-test(x,y)
+test(10,50)
 print(x,y)
+
+def f(s):
+    s = "I love you"
+    print(s)
+
+s = "I love myself"
+f(s)
+print(s)
