@@ -23,3 +23,19 @@ def math_fac(n):
     return(m)
 
 print(math_fac(5))
+
+
+def swap_test(b,x,y):
+    temp=b[x]
+    b[x]=b[y]
+    b[y]=temp
+
+a=[1,2,3,4,5]
+print(a) 
+swap_test(a,1,2)
+print(a)   
+
+x=1
+y=3
+y=x
+print(x,y)
