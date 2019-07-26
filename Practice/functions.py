@@ -26,16 +26,25 @@ print(math_fac(5))
 
 
 def swap_test(b,x,y):
+    c = b
     temp=b[x]
     b[x]=b[y]
     b[y]=temp
+    print(c)
 
 a=[1,2,3,4,5]
 print(a) 
 swap_test(a,1,2)
 print(a)   
 
-x=1
-y=3
-y=x
+def test(t,z):
+    temp = t
+    t = z
+    z = temp
+    print(t,z)
+
+x = 10
+y = 50
+print(x,y)
+test(x,y)
 print(x,y)
