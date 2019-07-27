@@ -3,6 +3,9 @@
 
 #엑셀과 파이썬 사용 전에 무조권 cmd에 들어가서 'pip install Xlsxwriter' 그리고 'pip install xlrd' 라고 쳐야함!
 #Reference: https://xlsxwriter.readthedocs.io/ 
+# https://www.blog.pythonlibrary.org/2014/04/30/reading-excel-spreadsheets-with-python-and-xlrd/
+#and https://automatetheboringstuff.com/appendixa/ 
+
 
 ##############################################################################
 #
