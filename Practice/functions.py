@@ -29,19 +29,16 @@ print(math_fac(5))
 
 
 def swap_test(c,x,y):
-    m = []
-    b = c #[1,2,3,4,5] = [1,2,3,4,5]
-    m = b
-    temp=b[x]
-    b[x]=b[y]
-    b[y]=temp
-    print(b, c, m) #My prediction: [1,3,2,4,5] [1,3,2,4,5] [1,2,3,4,5]
+    m=list(c)   
+    temp=c[x]
+    c[x]=c[y]
+    c[y]=temp
+    print(m)
+    print(c) #My prediction: [1,3,2,4,5] [1,3,2,4,5] [1,2,3,4,5]
 
 a = [1,2,3,4,5]
-d=a
-print(d)
 swap_test(a,1,2)  
-print(a, d) #My prediction: [1,3,2,4,5] [1,2,3,4,5]
+print(a) #My prediction: [1,3,2,4,5] [1,2,3,4,5]
 
 
 
