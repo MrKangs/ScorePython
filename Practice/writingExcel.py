@@ -47,7 +47,6 @@ for row in rows:
 # the data from the empty row 
 # (in this case, it will add data in row 4,5,6,7,8,9)
 
-
 book.save("sample.xlsx")
 #We write the contents to the sample.xlsx file with the save() method
 
