@@ -10,8 +10,8 @@ def main():
     f = open("Score.txt", "r") # r는 읽기 모드
     if f.mode == 'r': 
         #Method 1
-        contents = f.read() #read() function는 그 내용을 복사는 형식
-        print (contents)
+        #contents = f.read() #read() function는 그 내용을 복사는 형식
+        #print (contents)
         #Method 2
         fl = f.readlines()#readlines() function는 줄 한개씩 읽는 용도(복사까지)
         for x in fl:
