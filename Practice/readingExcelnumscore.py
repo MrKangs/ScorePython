@@ -1,4 +1,5 @@
 import openpyxl
+import statistics as stats
 
 num = openpyxl.load_workbook('num.xlsx')
 
@@ -6,8 +7,13 @@ sheet = num.active
 
 # Another way to print data
 
+total = []
 for x in range(2, 34):  #replace 34 for counter
-    print(sheet['A' + str(x)].value)
+    rawdata = sheet['A' + str(x)].value
+    print(rawdata)
+    total.append(rawdata)
+
+print("The mean is ", stats.mean(total))
 
 
 # It will print as a the same format in Excel 
