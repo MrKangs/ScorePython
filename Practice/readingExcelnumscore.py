@@ -6,10 +6,10 @@ num = openpyxl.load_workbook('num.xlsx')
 sheet = num.active
 
 # Another way to print data
-counter = input("How many students' data do you have?")
+counter = int(input("How many students' data do you have?"))
 total = []
-for x in range(2, counter):  #replace 34 for counter
-    rawdata = sheet['A' + str(x)].value
+for x in range(0, counter):  #replace 33 for counter
+    rawdata = sheet['A' + str(x + 2)].value
     print(rawdata)
     total.append(rawdata)
 
