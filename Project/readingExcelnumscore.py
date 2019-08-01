@@ -16,6 +16,12 @@ location = str(input("Which column the scores are located?: "))
 
 total = []
 
+#def switch_for_chart(number):
+#    if(number == 'A'):
+#        return 1
+    
+
+
 for x in range(0, counter): 
     rawdata = sheet[str(location) + str(x + 2)].value
     print(rawdata)
@@ -45,5 +51,29 @@ sheet['B' + str(counter + 6)] = SD
 
 sheet['A' + str(counter + 7)] = "Variance:"
 sheet['B' + str(counter + 7)] = Variance
+
+# 학생 성적 : A2 to A34
+# 학생 이름 : C2 to C34
+# Chart location: E36
+
+chart = ScatterChart()
+
+xvalues = Reference(sheet, min_col = 3, min_row = 2, max_row = (counter + 1))
+
+yvalues = Reference(sheet, min_col = 1, min_row = 2, max_row = (counter + 1))
+
+#switch_for_chart(location)
+
+series = Series(values = yvalues, xvalues = xvalues, title = "2019 중간고사 성적")
+
+chart.series.append(series)
+
+chart.title = "Number Theory 2019 Middle Term"
+
+chart.x_axis.title = "학생 이름"
+
+chart.y_axis.title = "학생 성적"
+
+sheet.add_chart(chart, "E36")
 
 num.save("num.xlsx")

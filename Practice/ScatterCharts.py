@@ -1,38 +1,64 @@
-from openpyxl import Workbook
-from openpyxl.chart import (
-    ScatterChart,
-    Reference,
-    Series,
-)
-
-wb = Workbook()
-ws = wb.active
-
-rows = [
-    ['Size', 'Batch 1', 'Batch 2'],
-    [2, 40, 30],
-    [3, 40, 25],
-    [4, 50, 30],
-    [5, 30, 25],
-    [6, 25, 35],
-    [7, 20, 40],
-]
-
-for row in rows:
-    ws.append(row)
-
-chart = ScatterChart()
-chart.title = "Scatter Chart"
-chart.style = 3
-chart.x_axis.title = 'Size'
-chart.y_axis.title = 'Percentage'
-
-xvalues = Reference(ws, min_col=1, min_row=2, max_row=7)
-for i in range(2, 4):
-    values = Reference(ws, min_col=i, min_row=1, max_row=7)
-    series = Series(values, xvalues, title_from_data=True)
-    chart.series.append(series)
-
-ws.add_chart(chart, "A10")
-
-wb.save("scatter.xlsx")
+# import openpyxl module 
+import openpyxl 
+  
+# import ScatterChart, Reference, Series 
+# class from openpyxl.chart sub_module 
+from openpyxl.chart import ScatterChart, Reference, Series 
+  
+# Call a Workbook() function of openpyxl  
+# to create a new blank Workbook object 
+wb = openpyxl.Workbook() 
+  
+# Get workbook active sheet  
+# from the active attribute. 
+sheet = wb.active 
+  
+rows = [ 
+    ("Number of Products", "Sales in USD", "Market share"), 
+    (14, 12200, 15), 
+    (20, 60000, 33), 
+    (18, 24400, 10), 
+    (22, 32000, 42), 
+] 
+  
+# write content of each row in 1st, 2nd and 3rd 
+# column of the active sheet respectively . 
+for row in rows: 
+    sheet.append(row) 
+  
+# Create object of ScatterChart class 
+chart = ScatterChart() 
+  
+# create data for plotting 
+xvalues = Reference(sheet, min_col = 1, 
+                    min_row = 2, max_row = 5) 
+                      
+yvalues = Reference(sheet, min_col = 2, 
+                    min_row = 2, max_row = 5) 
+                      
+size = Reference(sheet, min_col = 3, 
+                 min_row = 2, max_row = 5) 
+  
+# create a 1st series of data 
+series = Series(values = yvalues, xvalues = xvalues, 
+                      zvalues = size, title ="2013") 
+  
+# add series data to the chart object 
+chart.series.append(series) 
+  
+# set the title of the chart 
+chart.title = " SCATTER-CHART "
+  
+# set the title of the x-axis 
+chart.x_axis.title = " X_AXIS "
+  
+# set the title of the y-axis 
+chart.y_axis.title = " Y_AXIS "
+  
+# add chart to the sheet 
+# the top-left corner of a chart 
+# is anchored to cell E2 . 
+sheet.add_chart(chart, "E2") 
+  
+# save the file 
+wb.save(" ScatterChart.xlsx") 
