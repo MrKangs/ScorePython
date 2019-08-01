@@ -66,9 +66,8 @@ sheet['B' + str(counter + 6)] = Sd
 sheet['A' + str(counter + 7)] = "Variance:"
 sheet['B' + str(counter + 7)] = Variance
 
-# 학생 성적 : A2 to A34
-# 학생 이름 : C2 to C34
-# Chart location: E36
+
+#TODO: Chart location user input, chart name label represent
 
 chart = ScatterChart()
 
