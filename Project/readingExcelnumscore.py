@@ -43,7 +43,7 @@ for x in range(0, counter):
 
 Mean = stats.mean(total)
 Median = stats.median(total)
-SD = stats.stdev(total)
+Sd = stats.stdev(total)
 Min = min(total)
 Max = max(total)
 Variance = stats.variance(total)
@@ -61,7 +61,7 @@ sheet['A' + str(counter + 5)] = "Min:"
 sheet['B' + str(counter + 5)] = Min
 
 sheet['A' + str(counter + 6)] = "Standard Deviation:"
-sheet['B' + str(counter + 6)] = SD
+sheet['B' + str(counter + 6)] = Sd
 
 sheet['A' + str(counter + 7)] = "Variance:"
 sheet['B' + str(counter + 7)] = Variance
