@@ -33,6 +33,12 @@ def switch_for_chart(number):
         return 7
     elif(number == 'H'):
         return 8    
+    elif(number == 'I'):
+        return 9
+    elif(number == 'J'):
+        return 10
+    elif(number == 'K'):
+        return 11
     
 
 
@@ -66,8 +72,10 @@ sheet['B' + str(counter + 6)] = Sd
 sheet['A' + str(counter + 7)] = "Variance:"
 sheet['B' + str(counter + 7)] = Variance
 
+chart_location_column = input("Where do you want your chart locate in column?: ")
+chart_location_row = input("Where do you want your chart locate in row?: ")
 
-#TODO: Chart location user input, chart name label represent, and reading files in different location
+#TODO: Chart location user input, reading files in different location
 
 chart = ScatterChart()
 
@@ -85,6 +93,6 @@ chart.x_axis.title = "학생 이름"
 
 chart.y_axis.title = "학생 성적"
 
-sheet.add_chart(chart, "E36")
+sheet.add_chart(chart, str(chart_location_column) + str(chart_location_row))
 
 num.save("num.xlsx")
