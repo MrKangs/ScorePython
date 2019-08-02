@@ -1,14 +1,11 @@
 import openpyxl
 import statistics as stats
-from openpyxl.chart import (
-    ScatterChart,
-    Reference,
-    Series,
-)
 from matplotlib import pyplot as plt
+import matplotlib as mpl
+import matplotlib.font_manager as fm
 
-
-
+font_name = fm.FontProperties(fname='c:/Windows/Fonts/malgun.ttf').get_name()
+mpl.rc('font', family=font_name)
 
 num = openpyxl.load_workbook('num.xlsx')
 
@@ -17,6 +14,7 @@ sheet = num.active
 counter = int(input("How many students' data do you have?: "))
 location_for_score = str(input("Which column the scores are located?: "))
 location_for_name = str(input("Which column the names are located?: "))
+
 totalx = []
 totaly = []
 
@@ -51,31 +49,12 @@ for y in range(0, counter):
     totaly.append(rawdatay)
 
 
-print(str(totalx))
-print(str(totaly))
+print((totalx))
+print((totaly))
 
-plt.plot(str(totaly),str(totalx))
+#plt.plot(totaly,totalx)
+
+plt.bar(totaly,totalx)
+
 plt.show()
-
-
-
-
-chart = ScatterChart()
-
-xvalues = Reference(sheet, min_col = switch_for_chart(location_for_name), min_row = 2, max_row = (counter + 1))
-
-yvalues = Reference(sheet, min_col = switch_for_chart(location_for_score), min_row = 2, max_row = (counter + 1))
-
-series = Series(values = yvalues, xvalues = xvalues, title = "2019 중간고사 성적")
-
-chart.series.append(series)
-
-chart.title = "Number Theory 2019 Middle Term"
-
-chart.x_axis.title = "학생 이름"
-
-chart.y_axis.title = "학생 성적"
-
-sheet.add_chart(chart, "E36")
-
 num.save("num.xlsx")

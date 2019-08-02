@@ -67,7 +67,7 @@ sheet['A' + str(counter + 7)] = "Variance:"
 sheet['B' + str(counter + 7)] = Variance
 
 
-#TODO: Chart location user input, chart name label represent
+#TODO: Chart location user input, chart name label represent, and reading files in different location
 
 chart = ScatterChart()
 
