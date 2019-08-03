@@ -49,8 +49,8 @@ for y in range(0, counter):
     totaly.append(rawdatay)
 
 
-print((totalx))
-print((totaly))
+print(totalx)
+print(totaly)
 
 #plt.plot(totaly,totalx)
 

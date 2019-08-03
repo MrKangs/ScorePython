@@ -75,7 +75,7 @@ sheet['B' + str(counter + 7)] = Variance
 chart_location_column = input("Where do you want your chart locate in column?: ")
 chart_location_row = input("Where do you want your chart locate in row?: ")
 
-#TODO: Chart location user input, reading files in different location
+#TODO: reading files in different location
 
 chart = ScatterChart()
 
