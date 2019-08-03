@@ -1,0 +1,3 @@
+
+print((totalx))
+print((totaly))
