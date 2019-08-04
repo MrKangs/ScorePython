@@ -104,7 +104,7 @@ sheet['B' + str(counter + 7)] = Variance
 
 #Chart-----------------------------------------------------------------------------------------
 plt.figure(1)
-plt.xlabel("이름")
+plt.xlabel("학생 이름")
 plt.ylabel("2019 중간고사 성적")
 plt.title("2019 정수론 중간고사")
 plt.plot(totalx,totaly,'rs--')
