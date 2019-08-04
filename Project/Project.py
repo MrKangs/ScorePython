@@ -8,9 +8,13 @@ from openpyxl.chart import (
 from matplotlib import pyplot as plt
 import matplotlib as mpl
 import matplotlib.font_manager as fm
+import numpy as np
+from matplotlib.patches import Polygon
+import pandas as pd
+import seaborn as sea
+from pandas import read_csv
 
 #Setup----------------------------------------------------------------------------------------
-
 font_name = fm.FontProperties(fname='c:/Windows/Fonts/malgun.ttf').get_name()
 mpl.rc('font', family=font_name)
 totalx = [] #학생 이름들
@@ -68,13 +72,14 @@ for y in range(0, counter):
     totaly.append(rawdatay)
 
 
-
 Mean = stats.mean(totaly)
-Median = stats.median(totaly)
-Sd = stats.stdev(totaly)
+Median = stats.median(totaly) #Center
+Sd = stats.stdev(totaly) 
 Min = min(totaly)
 Max = max(totaly)
 Variance = stats.variance(totaly)
+q1 = np.quantile(totaly, .25)
+q3 = np.quantile(totaly, .75)
 
 #Excel-----------------------------------------------------------------------------------------
 
@@ -98,10 +103,11 @@ sheet['B' + str(counter + 7)] = Variance
 
 
 #Chart-----------------------------------------------------------------------------------------
-
+plt.figure(1)
 plt.plot(totalx,totaly)
-
 plt.bar(totalx,totaly)  #(학생 이름(x-value),학생 성적(y-value))
+plt.figure(2)
+plt.boxplot(totaly)
 
 plt.show()
 excel_file.save(str(location_for_file))
