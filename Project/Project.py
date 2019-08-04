@@ -3,7 +3,7 @@ import statistics as stats
 from openpyxl.chart import (
     ScatterChart,
     Reference,
-    Series,
+    Series
 )
 from matplotlib import pyplot as plt
 import matplotlib as mpl
@@ -104,9 +104,14 @@ sheet['B' + str(counter + 7)] = Variance
 
 #Chart-----------------------------------------------------------------------------------------
 plt.figure(1)
-plt.plot(totalx,totaly)
+plt.xlabel("이름")
+plt.ylabel("2019 중간고사 성적")
+plt.title("2019 정수론 중간고사")
+plt.plot(totalx,totaly,'rs--')
 plt.bar(totalx,totaly)  #(학생 이름(x-value),학생 성적(y-value))
+
 plt.figure(2)
+plt.title("2019 정수론 중간고사")
 plt.boxplot(totaly)
 
 plt.show()
