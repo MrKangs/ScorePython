@@ -11,12 +11,13 @@ import matplotlib.font_manager as fm
 import numpy as np
 from matplotlib.patches import Polygon
 import pandas as pd
-import seaborn as sea
+import seaborn as sea ; sea.set()
 from pandas import read_csv
 
 #Setup----------------------------------------------------------------------------------------
 font_name = fm.FontProperties(fname='c:/Windows/Fonts/malgun.ttf').get_name()
 mpl.rc('font', family=font_name)
+sea.set_color_codes()
 totalx = [] #학생 이름들
 totaly = [] #학생 성적들
 
@@ -49,14 +50,16 @@ def switch_for_chart(number):
 counter = int(input("학생수는?: "))
 location_for_score = str(input("점수 열는 어디?: "))
 location_for_name = str(input("학생 이름 명단열 어디?: "))
-print("파일 속성에 들어 가서 주소를 복사하고.")
-print("다음 질문에 붙어라! 그리고 파일 이름 & extension 까지 적고 enter 치라.")
+print("*********************************************************************")
+print("*           파일 속성에 들어 가서 주소를 복사하고                      *")
+print("* 다음 질문에 붙어라! 그리고 파일 이름 & extension 까지 적고 enter 치라.*")
+print("*********************************************************************")
 location_for_file = str(input("파일은 어디에 위치 되어있어?: "))
 x_axis = str(input("x축 명은?: "))
 y_axis = str(input("y축 명은?: "))
 min_unit = int(input("그래프의 최소 값은?: "))
 max_unit = int(input("그래프의 최대 값은?: "))
-difference = int(input("단위 크기는? "))
+units = int(input("단위 크기는? "))
 Title = str(input("그래프 명은?: "))
 
 excel_file = openpyxl.load_workbook(str(location_for_file))
@@ -112,16 +115,19 @@ plt.figure(1)
 plt.xlabel(x_axis)
 plt.ylabel(y_axis)
 plt.title(Title)
-plt.plot(totalx,totaly,'rs--')
+plt.plot(totalx,totaly,'gs--') #plt.plot(totalx,totaly, color = 'g') --> using seaborn
 plt.bar(totalx,totaly)  #(학생 이름(x-value),학생 성적(y-value))
-plt.yticks(np.arange(min_unit, max_unit, difference)) #눈금: (min, max, 단위)
+plt.yticks(np.arange(min_unit, max_unit, units)) #눈금: (min, max, 단위)
 
 plt.figure(2)
+plt.xlabel(x_axis)
+plt.ylabel(y_axis)
 plt.title(Title)
-plt.yticks(np.arange(min_unit ,max_unit, difference)) #눈금: (min, max, 단위)
+plt.title(Title)
+plt.yticks(np.arange(min_unit ,max_unit, units)) #눈금: (min, max, 단위)
 plt.boxplot(totaly)
 
 plt.show()
 excel_file.save(str(location_for_file))
 
-#TODO: 다양한 종류의 챠트 와 한창에서 표현, 그래프 색변경, 3년의 같은 데이트를 한 창에서 표현, 타이틀 및 단위
+#TODO: 다양한 종류의 챠트 와 한창에서 표현, 그래프 색변경, 3년의 같은 데이트를 한 창에서 표현
