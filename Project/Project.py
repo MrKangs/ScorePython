@@ -131,3 +131,4 @@ plt.show()
 excel_file.save(str(location_for_file))
 
 #TODO: 다양한 종류의 챠트 와 한창에서 표현, 그래프 색변경, 3년의 같은 데이트를 한 창에서 표현
+# https://datascienceschool.net/view-notebook/d0b1637803754bb083b5722c9f2209d0/
