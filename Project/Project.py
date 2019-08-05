@@ -16,6 +16,7 @@ font_name = fm.FontProperties(fname='c:/Windows/Fonts/malgun.ttf').get_name()
 mpl.rc('font', family=font_name)
 totalx = [] #학생 이름들
 totaly = [] #학생 성적들
+histogram_bin_num = 10
 
 def switch_for_chart(number):
     if(number == 'A'):
@@ -97,10 +98,18 @@ plt.figure(2)
 plt.xlabel(x_axis)
 plt.ylabel(y_axis)
 plt.title(Title)
-plt.title(Title)
 plt.yticks(np.arange(min_unit ,max_unit, units)) #눈금: (min, max, 단위)
 plt.boxplot(totaly)
 plt.savefig(Title +  str("2.png"))
+
+
+plt.figure(3)
+plt.hist(totaly, histogram_bin_num, density= 1)
+plt.xlabel(y_axis)
+plt.ylabel("빈도")
+plt.title(Title)
+plt.savefig(Title +  str("3.png"))
+
 
 plt.show()
 
@@ -126,14 +135,20 @@ sheet['B' + str(counter + 7)] = Variance
 
 img1 = openpyxl.drawing.image.Image(Title + str("1.png"))
 img2 = openpyxl.drawing.image.Image(Title + str("2.png"))
+img3 = openpyxl.drawing.image.Image(Title + str("3.png"))
+
 
 img1.anchor = 'J1'
 img2.anchor = 'J50' #TODO: user input for chart location in an excel file
+img3.anchor = 'J100'
 
 sheet.add_image(img1)
 sheet.add_image(img2)
+sheet.add_image(img3)
+
 
 excel_file.save(str(location_for_file))
 
 #TODO: 다양한 종류의 챠트 와 한창에서 표현, 그래프 색변경, 3년의 같은 데이트를 한 창에서 표현
 # https://datascienceschool.net/view-notebook/d0b1637803754bb083b5722c9f2209d0/
+# https://matplotlib.org/gallery/index.html 
