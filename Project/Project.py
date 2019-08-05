@@ -71,12 +71,10 @@ sheet = excel_file.active
 
 for x in range(0, counter): 
     rawdatax = sheet[str(location_for_name) + str(x + 2)].value
-    print(rawdatax)
     totalx.append(rawdatax)
 
 for y in range(0, counter): 
     rawdatay = sheet[str(location_for_score) + str(y + 2)].value
-    print(rawdatay)
     totaly.append(rawdatay)
 
 
