@@ -49,15 +49,34 @@ print("*           파일 속성에 들어 가서 주소를 복사하고        
 print("* 다음 질문에 붙어라! 그리고 파일 이름 & extension 까지 적고 enter 치라.*")
 print("*************************************************************************")
 location_for_file = str(input("파일은 어디에 위치 되어있어?: "))
+print()
+print("****************************************************************************************************")
+print("*                                   원하는 그래프를 번호로 입력하라!                               *")
+print("* 1＝ bar chart with line chart, 2 = box and wisker chart, 3 = histogram with best fit line chart　*")
+print("****************************************************************************************************")
+
+chart_desire = int(input("무슨 그래프를 원해?"))
+print()
 counter = int(input("학생수는?: "))
+print()
 location_for_score = str(input("점수 열는 어디?: "))
+print()
 location_for_name = str(input("학생 이름 명단열 어디?: "))
+print()
 x_axis = str(input("x축 명은?: "))
+print()
 y_axis = str(input("y축 명은?: "))
+print()
 min_unit = int(input("그래프의 최소 값은?: "))
+print()
 max_unit = int(input("그래프의 최대 값은?: "))
+print()
 units = int(input("단위 크기는? "))
+print()
 Title = str(input("그래프 명은?: "))
+print()
+chart_location = str(input("그래프 위치는 어디에?: "))
+
 
 excel_file = openpyxl.load_workbook(str(location_for_file))
 
@@ -65,15 +84,9 @@ sheet = excel_file.active
 
 #Calculations----------------------------------------------------------------------------------    
 
-
-for x in range(0, counter): 
-    rawdatax = sheet[str(location_for_name) + str(x + 2)].value
-    totalx.append(rawdatax)
-
 for y in range(0, counter): 
     rawdatay = sheet[str(location_for_score) + str(y + 2)].value
     totaly.append(rawdatay)
-
 
 Mean = stats.mean(totaly)
 Median = stats.median(totaly) #Center
@@ -84,31 +97,39 @@ Variance = stats.variance(totaly)
 q1 = np.quantile(totaly, .25)
 q3 = np.quantile(totaly, .75)
 
+if (chart_desire == 1 or 2):
+    for x in range(0, counter): 
+        rawdatax = sheet[str(location_for_name) + str(x + 2)].value
+        totalx.append(rawdatax)
+
+
 #Chart-----------------------------------------------------------------------------------------
-plt.figure(1)
-plt.xlabel(x_axis)
-plt.ylabel(y_axis)
-plt.title(Title)
-plt.plot(totalx,totaly,'gs--') #plt.plot(totalx,totaly, color = 'g') --> using seaborn
-plt.bar(totalx,totaly)  #(학생 이름(x-value),학생 성적(y-value))
-plt.yticks(np.arange(min_unit, max_unit, units)) #눈금: (min, max, 단위)
-plt.savefig(Title +  str("1.png"))
+if(chart_desire == 1):
+    plt.figure(1)
+    plt.xlabel(x_axis)
+    plt.ylabel(y_axis)
+    plt.title(Title)
+    plt.plot(totalx,totaly,'gs--') #plt.plot(totalx,totaly, color = 'g') --> using seaborn
+    plt.bar(totalx,totaly)  #(학생 이름(x-value),학생 성적(y-value))
+    plt.yticks(np.arange(min_unit, max_unit, units)) #눈금: (min, max, 단위)
+    plt.savefig(Title +  str("1.png")) #TODO:graph size need to be find for saving purpose
 
-plt.figure(2)
-plt.xlabel(x_axis)
-plt.ylabel(y_axis)
-plt.title(Title)
-plt.yticks(np.arange(min_unit ,max_unit, units)) #눈금: (min, max, 단위)
-plt.boxplot(totaly)
-plt.savefig(Title +  str("2.png"))
+elif(chart_desire == 2):
+    plt.figure(2)
+    plt.xlabel(x_axis)
+    plt.ylabel(y_axis)
+    plt.title(Title)
+    plt.yticks(np.arange(min_unit ,max_unit, units)) #눈금: (min, max, 단위)
+    plt.boxplot(totaly)
+    plt.savefig(Title +  str("2.png"))
 
-
-plt.figure(3)
-plt.hist(totaly, histogram_bin_num, density= 1)
-plt.xlabel(y_axis)
-plt.ylabel("빈도")
-plt.title(Title)
-plt.savefig(Title +  str("3.png"))
+elif(chart_desire == 3):
+    plt.figure(3)
+    plt.hist(totaly, histogram_bin_num, density= 1)
+    plt.xlabel(y_axis)
+    plt.ylabel("빈도")
+    plt.title(Title)
+    plt.savefig(Title +  str("3.png"))
 
 
 plt.show()
@@ -133,18 +154,18 @@ sheet['B' + str(counter + 6)] = Sd
 sheet['A' + str(counter + 7)] = "Variance:"
 sheet['B' + str(counter + 7)] = Variance
 
-img1 = openpyxl.drawing.image.Image(Title + str("1.png"))
-img2 = openpyxl.drawing.image.Image(Title + str("2.png"))
-img3 = openpyxl.drawing.image.Image(Title + str("3.png"))
-
-
-img1.anchor = 'J1'
-img2.anchor = 'J50' #TODO: user input for chart location in an excel file
-img3.anchor = 'J100'
-
-sheet.add_image(img1)
-sheet.add_image(img2)
-sheet.add_image(img3)
+if(chart_desire == 1):
+    img1 = openpyxl.drawing.image.Image(Title + str("1.png"))
+    img1.anchor = chart_location
+    sheet.add_image(img1)
+elif(chart_desire == 2):
+    img2 = openpyxl.drawing.image.Image(Title + str("2.png"))
+    img2.anchor = chart_location
+    sheet.add_image(img2)
+elif(chart_desire == 3):
+    img3 = openpyxl.drawing.image.Image(Title + str("3.png"))
+    img3.anchor = chart_location
+    sheet.add_image(img3)
 
 
 excel_file.save(str(location_for_file))
