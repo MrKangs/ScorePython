@@ -1,8 +1,23 @@
-def cal_rec_area(x, y):
-    return(x*y)
+def cal_rec_area(width, length):    # width and length are called parameter
+    return(width*length)
 
-print(cal_rec_area(10,20))    
+print(cal_rec_area(10,20)) # call function and print the result from the return value with arguments 10 and 20 
+#######################################################################################
 
+def Add(num1,num2):
+    print("{}+{}={}".format(num1,num2,num1+num2)) 
+
+Add(10,20)    
+#####################################################################################
+
+def Add2(x,*y):
+    print("x=",x)
+    for i in y:
+        print(i, end=' ')
+        print(i)
+
+Add2(1,2,3,4,5)        
+#####################################################################################
 
 
 def spam(egg):
@@ -14,8 +29,10 @@ def spam(egg):
 ham=[0]
 spam(ham)
 print(ham)  
+#####################################################################################
 
-def math_fac(n):
+
+def math_fac(n):              # factorial of n
     if n == 1: return(1)
     m=1
     for i in range(1,n):
@@ -23,7 +40,7 @@ def math_fac(n):
     return(m)
 
 print(math_fac(5))
-
+####################################################################################
 
 
 
@@ -68,6 +85,8 @@ y = 50
 print(x,y)
 test(10,50)
 print(x,y)
+#########################################################################
+
 
 def f(s):
     s = "I love you"
