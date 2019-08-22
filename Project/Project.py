@@ -112,6 +112,7 @@ if(chart_desire == 1):
     plt.plot(totalx,totaly,'gs--') #plt.plot(totalx,totaly, color = 'g') --> using seaborn
     plt.bar(totalx,totaly)  #(학생 이름(x-value),학생 성적(y-value))
     plt.yticks(np.arange(min_unit, max_unit, units)) #눈금: (min, max, 단위)
+    #plt.set_xticklables(totalx, rotation = -90) #https://steemit.com/kr-dev/@dj-on-steem/matplotlib-04-axes-setup-ticks-and-tick-labels 
     plt.savefig(Title +  str("1.png")) #TODO:graph size need to be find for saving purpose
 
 elif(chart_desire == 2):
